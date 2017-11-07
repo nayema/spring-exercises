@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>New Book</title>
+</head>
+<body>
+<form th:action="@{/create}" th:object="${book}" method="post">
+    <div>
+        <label th:for="${#ids.next('title')}">Title:</label>
+        <input type="text" th:field="*{title}"/>
+    </div>
+    <div>
+        <label th:for="${#ids.next('author')}">Author:</label>
+        <input type="text" th:field="*{author}"/>
+    </div>
+    <div>
+        <label th:for="${#ids.next('publishedDate')}"></label>
+        <input type="date" th:field="*{publishedDate}"/>
+    </div>
+    <div>
+        <label th:for="${#ids.next('price')}"></label>
+        <input type="number" th:field="*{price}" min="0" step=".01"/>
+    </div>
+    <div>
+        <input type="submit"/>
+        <a href="/">Cancel</a>
+    </div>
+</form>
+</body>
+</html>
