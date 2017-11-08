@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="exercise_01/fragments :: head(title='Books Index')">
+</head>
+<body>
+<header th:replace="exercise_01/fragments :: header"></header>
+<div class="container">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Published Date</th>
+            <th>Price ($)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publishedDate}"></td>
+            <td th:text="${#numbers.formatDecimal(book.price, 0, 'DEFAULT', 2, 'DEFAULT')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <a href="/new">New Book</a>
+    </div>
+</div>
+</body>
+</html>
